@@ -29,21 +29,63 @@ public class Restaurant {
     private List<MenuItem> menuItems;
 
     // Constructors
-    public Restaurant() {}
+    public Restaurant() {
+    }
 
     // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this id = id; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public Double getLatitude() { return latitude; }
-    public void setLatitude(Double latitude) { this.latitude = latitude; }
-    public Double getLongitude() { return longitude; }
-    public void setLongitude(Double longitude) { this.longitude = longitude; }
-    public boolean isOpen() { return isOpen; }
-    public void setOpen(boolean isOpen) { this.isOpen = isOpen; }
-    public User getOwner() { return owner; }
-    public void setOwner(User owner) { this.owner = owner; }
-    public List<MenuItem> getMenuItems() { return menuItems; }
-    public void setMenuItems(List<MenuItem> menuItems) { this.menuItems = menuItems; }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
+
+    public void setOpen(boolean isOpen) {
+        this.isOpen = isOpen;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public List<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(List<MenuItem> menuItems) {
+        this.menuItems = menuItems;
+    }
 }
