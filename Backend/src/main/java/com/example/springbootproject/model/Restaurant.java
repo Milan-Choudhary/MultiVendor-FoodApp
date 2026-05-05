@@ -1,5 +1,6 @@
 package com.example.springbootproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -14,15 +15,23 @@ public class Restaurant {
     @Column(nullable = false)
     private String name;
 
-    // For GPS tracking and proximity
+    // --- NEW: Search & Filter Fields ---
+    private String location;
+    private String category; // e.g., Veg, Non-Veg, Cafe
+    private String cuisine; // e.g., Indian, Chinese, Italian
+    private Integer priceRange; // 1 = $, 2 = $$, 3 = $$$, 4 = $$$$
+    private Double rating = 0.0;
+
+    // --- GPS Tracking ---
     private Double latitude;
     private Double longitude;
 
     private boolean isOpen = true;
 
-    // Links to your existing User model (the Vendor)
+    // --- Relationships ---
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id", nullable = false)
+    @JsonIgnore // CRITICAL: Hides the vendor's private user data from the API response
     private User owner;
 
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -32,7 +41,8 @@ public class Restaurant {
     public Restaurant() {
     }
 
-    // Getters and Setters
+    // Getters and Setters (You can generate these via your IDE or Lombok @Data, but
+    // here they are explicitly)
     public Long getId() {
         return id;
     }
@@ -47,6 +57,46 @@ public class Restaurant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getCuisine() {
+        return cuisine;
+    }
+
+    public void setCuisine(String cuisine) {
+        this.cuisine = cuisine;
+    }
+
+    public Integer getPriceRange() {
+        return priceRange;
+    }
+
+    public void setPriceRange(Integer priceRange) {
+        this.priceRange = priceRange;
+    }
+
+    public Double getRating() {
+        return rating;
+    }
+
+    public void setRating(Double rating) {
+        this.rating = rating;
     }
 
     public Double getLatitude() {
