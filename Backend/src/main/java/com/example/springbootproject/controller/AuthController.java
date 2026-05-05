@@ -14,21 +14,24 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    // POST: http://localhost:8080/api/auth/signup
     @PostMapping("/signup")
     public ResponseEntity<?> signup(@RequestBody SignupRequest request) {
         try {
             return ResponseEntity.ok(authService.registerUser(request));
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage()); // Returns 400 Bad Request on failure
         }
     }
 
+    // POST: http://localhost:8080/api/auth/login
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request) {
         try {
+            // Returns 200 OK with the JwtResponse JSON object
             return ResponseEntity.ok(authService.loginUser(request));
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.badRequest().body(e.getMessage()); // Returns 400 Bad Request on failure
         }
     }
 }
